@@ -21,7 +21,7 @@ the Qt infrastructre as possible. This is done by using `QCoreApplication`'s
 event structure to dispatch the signal as *events* in the platforms so that 
 developers can add an event filter to `QCoreApplication`. 
 
-```cplusplus
+```c++
 // Declare the handling object.
 FooObject obj;
 QtPosixSignal::SignalListener listener(obj);
@@ -39,7 +39,7 @@ interaction. All of the event listening and registering is abstracted away
 into the more friendly slots and signals system, so one can merely listen to 
 a signal with the following signature:
 
-```cplusplus
+```c++
 void functionname(uint const signal)
 ```
 
