@@ -35,7 +35,13 @@ listener.listenForSignal(obj, SIGTERM);
 
 By using `QtPosixSignal::SignalListener`, you can easily disable/enable your 
 specific listeners with `stop()`/`start()`; thus allowing for a seamless 
-interaction.
+interaction. All of the event listening and registering is abstracted away 
+into the more friendly slots and signals system, so one can merely listen to 
+a signal with the following signature:
+
+```cplusplus
+void functionname(uint const signal)
+```
 
 The passing of the event loop back up the main event loop is done by 
 `QtPosixSignal` so developers don't have to concern (or run the risk of 
