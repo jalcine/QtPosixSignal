@@ -48,11 +48,17 @@ The passing of the event loop back up the main event loop is done by
 corrupting) the event loop crashing.
 
 ## TODO
- + Test with Qt 4.8.4+
- + Test with Qt 5.0.0+
- + Test on Linux.
- + Test on BSD.
- + Test on OSX.
+ + Test.
+  + Add testing environment.
+   + Incorporate CDash.
+   + Incorporate (Travis.CI)[http://travis-ci.org]
+  + Test with different versions of Qt.
+   + Test with Qt4.
+   + Test with Qt5.
+  + Test on different platforms.
+   + Test on Linux.
+   + Test on BSD.
+   + Test on OSX.
  + Work on properly determining the list of listeners when invoked.
   + on the `QtPosixSignal::SignalListener` level.
   + on a class-specific level.
