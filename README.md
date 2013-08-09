@@ -23,7 +23,7 @@ developers can add an event filter to `QCoreApplication`.
 
 ```c++
 // Declare the handling object.
-FooObject obj;
+FooQObject obj;
 QtPosixSignal::SignalListener listener(obj);
 
 // Register the object.
@@ -31,16 +31,53 @@ listener.listenForSignals(obj);
 
 // Register the object for a specific signal.
 listener.listenForSignal(obj, SIGTERM);
+
 ```
 
 By using `QtPosixSignal::SignalListener`, you can easily disable/enable your 
 specific listeners with `stop()`/`start()`; thus allowing for a seamless 
 interaction. All of the event listening and registering is abstracted away 
 into the more friendly slots and signals system, so one can merely listen to 
-a signal with the following signature:
+a signal with the following signature as a slot:
 
 ```c++
+// function signature.
 void functionname(uint const signal)
+```
+
+```c++
+// object.hpp
+class Object : QObject {
+  QOBJECT;
+  QtPosixSignal::SignalListener* listener;
+  public:
+    explicit Object(QObject* parent);
+    virtual ~Object();
+
+    Q_SLOT void caughtSignal(uint const signal);
+    void stop();
+    void start();
+};
+
+// object.cpp
+#include "object.hpp"
+#include <QtCore/QDebug>
+
+Object::Object(QObject* parent) : QObject(parent), listener(this) {
+  listener->listenForSignals();
+}
+
+void Object::stop() {
+  listener->stop();
+}
+
+void Object::start() {
+  listener->start();
+}
+
+void Object::caughtSignal(uint const signal){ 
+  qDebug() << "Caught signal: " << signal;  
+}
 ```
 
 The passing of the event loop back up the main event loop is done by 
