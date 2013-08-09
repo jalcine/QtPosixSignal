@@ -16,10 +16,9 @@ Right now, you just need [Qt](http://qt-project.org) and the
 
 ## Usage
 
-Using `QtPosixSignal` is meant to simple as possible while using as much of 
-the Qt infrastructre as possible. This is done by using `QCoreApplication`'s 
-event structure to dispatch the signal as *events* in the platforms so that 
-developers can add an event filter to `QCoreApplication`. 
+Using `QtPosixSignal` is meant to simple as possible. The current
+implementation uses a light wrapper around Qt's event system by creating a new
+object of class `QtPosixSignal::SignalListener` an
 
 ```c++
 // Declare the handling object.
@@ -89,8 +88,8 @@ corrupting) the event loop crashing.
 ## TODO
  + Test.
   + Add testing environment.
-   + Incorporate CDash.
    + Incorporate (Travis.CI)[http://travis-ci.org]
+   + Incorporate (Coveralls)[http://coveralls.io]
   + Test with different versions of Qt.
    + Test with Qt4.
    + Test with Qt5.
@@ -102,9 +101,10 @@ corrupting) the event loop crashing.
   + on the `QtPosixSignal::SignalListener` level.
   + on a class-specific level.
   + on a global level.
+ + Expose an event for listening (i.e: `QtPosixSignal::SignalEvent`).
 
 ## License
-This code is licensed under the MIT license. We're all nice people, right?
+This code is licensed under the [MIT license](./LICENSE). We're all nice people, right?
 
 ## Author
-`QtPosixSignal` was written by [Jacky Alcine](me@jalcine.me).
+`QtPosixSignal` was written by [Jacky Alcine](http://jalcine.me).
