@@ -47,7 +47,9 @@ void functionname(uint const signal)
 
 ```c++
 // object.hpp
-class Object : QObject {
+#include <QtCore/QObject>
+#include <QtPosixSignal/SignalListener>
+class Object : public QObject {
   QOBJECT;
   QtPosixSignal::SignalListener* listener;
   public:
