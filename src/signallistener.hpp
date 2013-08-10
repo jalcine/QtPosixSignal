@@ -1,0 +1,6 @@
+#ifndef QTPOSIXSIGNAL_SIGNALLISTENER_HPP
+#define QTPOSIXSIGNAL_SIGNALLISTENER_HPP
+
+#include <QtCore/QObject>
+
+#endif
