@@ -13,6 +13,13 @@ namespace QtPosixSignal {
     public:
       SignalListener(QObject* parent);
       virtual ~SignalListener();
+
+      /**
+       * @fn handleSignal
+       *
+       * This signal is emitted when a POSIX signal is recieved internally.
+       */
+      Q_SIGNAL void signalReceived();
   };
 }
 
